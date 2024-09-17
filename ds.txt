@@ -1,0 +1,47 @@
+Rename: rename operator is used to give another name to relation. It is dented by rho(p).
+The expression p(R(F),E) it takes an arbitrary relational algebra expression E and returns an 
+instance of new relation called R. R contains same tuples as the result of E and same schema as 
+E, but some field are renamed. The field names in relation R are same as in E, except for fields 
+renamed in the renaming list, which is list term having the form old namenew name or 
+position  new name.
+Syntax: p(C(1sid1,5sid2), S1 X R1)
+It returns the relation contains the tuples( sid1:integer, sname:string,rating:integer,age :real, 
+sid2:integer, bid: integer, day:date).
+For example If we want to create a relation student_names with roll_no and name from student it 
+can be done using rename operator as:
+P(student_names,π(rollnoo,name)(student)).
+Division: this operator use full when a query contains ‘all’. For example find the names of 
+sailors who have reserved all boats. It is denoted slash (/). 
+Consider two relation instances A and B in which A has two fields x and y, and B has just one 
+field y with same domain as in A. The division operation (A/B) return set of x values for every y 
+value (a tuple of) B, there is tuple (x, y) in A.
+The division operation (A/B) can be defined as 
+Π x (A)- Π x(( Π x (A) X B) – A).
+Ex: consider the relation student (s), course (C)relations and find sid’s of students enrolled in all 
+or Every course.
+Table: course (C)
+Table: Enrolled (E)
+Sid cid
+S1 C1
+S2 C1
+S1 C2
+S3 C2
+cid
+C1
+C2
+E/C= Π sid (E)- Π sid(( Π sid (E) X C) – E).
+Π sid (E) X C = 
+( Π sid (E) X C) – E is
+Sid Cid
+S2 C1
+S3 C1
+Π sid(( Π sid (E) X C) – E is
+Π sid (E) is
+(E/C) = Π sid (E)- Π sid(( Π sid (E) X C) – E)
+ =s1 
+Output: S1
+Sid Cid
+S1 C1
+S1 C2
+S2 C1
+S2 C2
